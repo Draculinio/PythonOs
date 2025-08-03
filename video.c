@@ -4,13 +4,13 @@
 #define MAX_ROWS 25
 #define MAX_COLS 80
 
-// Colores por defecto (blanco sobre negro)
+// Colors (Need some more definitions for different colors)
 #define WHITE_ON_BLACK 0x0F
 
 static int cursor_row = 0;
 static int cursor_col = 0;
 
-// Escribe un caracter en una posición dada
+// Writes a character on a position
 static void put_char_at(char c, int row, int col, char attr) {
     char *video = (char*)VIDEO_ADDRESS;
     int offset = 2 * (row * MAX_COLS + col);
@@ -18,7 +18,7 @@ static void put_char_at(char c, int row, int col, char attr) {
     video[offset + 1] = attr;
 }
 
-// Borra la pantalla entera
+// Deletes screen
 void clear_screen() {
     for (int row = 0; row < MAX_ROWS; row++) {
         for (int col = 0; col < MAX_COLS; col++) {
@@ -29,7 +29,7 @@ void clear_screen() {
     cursor_col = 0;
 }
 
-// Imprime un string en la posición actual
+// Prints a string
 void print(const char *str) {
     while (*str) {
         if (*str == '\n') {
@@ -45,14 +45,14 @@ void print(const char *str) {
         }
 
         if (cursor_row >= MAX_ROWS) {
-            cursor_row = 0;  // Si se llena la pantalla, vuelve arriba (scroll simple)
+            cursor_row = 0;  // On overflow, wrap to the top (TODO: Scroll)
         }
 
         str++;
     }
 }
 
-//Imprime texto con un color específico
+//Prints with a specific color attribute
 void print_color(const char *str, char attr) {
     while (*str) {
         if (*str == '\n') {
@@ -68,7 +68,7 @@ void print_color(const char *str, char attr) {
         }
 
         if (cursor_row >= MAX_ROWS) {
-            cursor_row = 0;  // Simple wrap (scroll lo veremos después)
+            cursor_row = 0;  // Simple wrap (TODO: Scroll)
         }
 
         str++;
