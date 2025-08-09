@@ -22,7 +22,6 @@ void keyboard_interrupt() {
             print(str);
         }
     }
-    // El EOI lo manda irq1_handler.asm
 }
 
 void init_keyboard() {
