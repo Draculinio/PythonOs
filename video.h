@@ -1,6 +1,8 @@
 #ifndef VIDEO_H
 #define VIDEO_H
 
+#include <stdint.h>
+
 // Colors (Need some more definitions for different colors)
 #define BLACK 0x0
 #define BLUE 0x1
@@ -26,11 +28,17 @@
 #define BLACK_ON_WHITE COLOR(BLACK, WHITE)
 #define BLUE_ON_BLACK COLOR(BLUE, BLACK)
 #define GREEN_ON_BLACK COLOR(GREEN, BLACK)
+#define YELLOW_ON_BLACK COLOR(YELLOW, BLACK)
+#define CYAN_ON_BLACK COLOR(CYAN, BLACK)
+#define MAGENTA_ON_BLACK COLOR(MAGENTA, BLACK)
 
 void clear_screen();
 void print(const char *str);
 void print_color(const char *str, char attr);
 void backspace();
 void print_prompt();
+void print_int(int num); // This should not be in video.h, but is needed for memory.c
+void int_to_str(int num, char *str); // Function to convert integer to string
+void print_hex(uint32_t num);
 
 #endif

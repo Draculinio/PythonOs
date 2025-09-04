@@ -1,5 +1,5 @@
 #include "video.h"
-
+#include "string.h"
 
 #define VIDEO_ADDRESS 0xb8000
 #define MAX_ROWS 25
@@ -93,6 +93,30 @@ void print_color(const char *str, char attr) {
     }
 }
 
+void print_int(int num) {
+    char str[12]; // Enough for 32-bit int
+    int_to_str(num, str);
+    print(str);
+}
+
 void print_prompt() {
     print(PROMPT);
 }
+
+void print_hex(uint32_t num) {
+    char buffer[11]; // "0x" + 8 hex + '\0'
+    buffer[0] = '0';
+    buffer[1] = 'x';
+
+    for (int i = 0; i < 8; i++) {
+        uint8_t nibble = (num >> ((7 - i) * 4)) & 0xF;
+        if (nibble < 10)
+            buffer[2 + i] = '0' + nibble;
+        else
+            buffer[2 + i] = 'A' + (nibble - 10);
+    }
+
+    buffer[10] = '\0';
+    print(buffer);
+}
+

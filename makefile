@@ -7,11 +7,11 @@ KERNEL=kernel.bin
 ISO_DIR=iso
 GRUB_CFG=grub/grub.cfg
 
-OBJS=boot.o kernel.o video.o isr.o keyboard.o pic.o port_io.o isr_asm.o commands.o string.o
+OBJS=boot.o kernel.o video.o isr.o keyboard.o pic.o port_io.o isr_asm.o commands.o string.o memory.o utils.o
 
 all: iso
 
-kernel.bin: boot.s kernel.c video.c isr.c keyboard.c pic.c port_io.c isr.asm linker.ld commands.c string.c
+kernel.bin: boot.s kernel.c video.c isr.c keyboard.c pic.c port_io.c isr.asm linker.ld commands.c string.c memory.c utils.c
 	$(CC) $(CFLAGS) -c kernel.c -o kernel.o
 	$(CC) $(CFLAGS) -c video.c -o video.o
 	$(CC) $(CFLAGS) -c isr.c -o isr.o
@@ -20,7 +20,9 @@ kernel.bin: boot.s kernel.c video.c isr.c keyboard.c pic.c port_io.c isr.asm lin
 	$(CC) $(CFLAGS) -c port_io.c -o port_io.o
 	$(CC) $(CFLAGS) -c commands.c -o commands.o
 	$(CC) $(CFLAGS) -c string.c -o string.o
-
+	$(CC) $(CFLAGS) -c memory.c -o memory.o
+	$(CC) $(CFLAGS) -c utils.c -o utils.o
+	
 	nasm -f elf32 isr.asm -o isr_asm.o
 	nasm -f elf32 boot.s -o boot.o
 
