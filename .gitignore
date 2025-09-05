@@ -1,0 +1,34 @@
+# Archivos de compilación
+*.o
+*.bin
+*.iso
+*.img
+*.elf
+
+# Archivos de log
+*.log
+
+# Archivos de backup o swap
+*~
+*.swp
+
+# Archivos generados por Make
+*.map
+*.lst
+
+# Archivos del entorno de desarrollo
+.vscode/
+.idea/
+*.code-workspace
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# directoris de build
+iso/
+build/
+site/
+
