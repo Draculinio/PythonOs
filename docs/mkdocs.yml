@@ -1,10 +1,10 @@
-site_name: "Tu SO - Manual de Usuario"
+site_name: "PythonOS"
 site_description: "Documentación oficial del sistema operativo"
-site_url: "https://tu-usuario.github.io/tu-repo-name/"
+site_url: "https://Draculinio.github.io/PythonOs/"
 
 # Configuración del repositorio
-repo_name: "tu-usuario/tu-repo"
-repo_url: "https://github.com/tu-usuario/tu-repo"
+repo_name: "Draculinio/PythonOs"
+repo_url: "https://github.com/Draculinio/PythonOs"
 edit_uri: "edit/main/docs/"
 
 # Theme con estética noventera
@@ -97,7 +97,7 @@ extra:
     provider: mike
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/tu-usuario/tu-repo
+      link: https://github.com/Draculinio/PythonOs
     - icon: fontawesome/solid/terminal
       link: "#"
 
