@@ -1,0 +1,108 @@
+site_name: "Python OS - Documentation"
+site_description: "Documentation to get started with Python OS"
+site_url: "https://Draculinio.github.io/PythonOs/"
+
+# Configuración del repositorio
+repo_name: "Draculinio/PythonOs"
+repo_url: "https://github.com/tu-usuario/PythonOs"
+edit_uri: "edit/main/docs/"
+
+# Theme con estética noventera
+theme:
+  name: material
+  palette:
+    # Esquema de colores tipo terminal retro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: green
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: green
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  
+  font:
+    text: "Courier New"
+    code: "Courier New"
+  
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.action.edit
+
+# Estructura de navegación
+nav:
+  - Inicio: index.md
+  - Empezando: getting-started.md
+  - Comandos:
+    - commands/index.md
+  - Memoria:
+    - memory/index.md
+  - Ejemplos:
+    - examples/index.md
+
+# Plugins para funcionalidad extra
+plugins:
+  - search:
+      lang: es
+  - git-revision-date-localized:
+      type: datetime
+      locale: es
+
+# Extensions de Markdown
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+# CSS customizado para look noventero
+extra_css:
+  - documentation/stylesheets/retro.css
+
+# JavaScript extra (opcional)
+extra_javascript:
+  - documentation/javascripts/terminal-effects.js
+
+# Variables extra
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Draculinio/PythonOs
+    - icon: fontawesome/solid/terminal
+      link: "#"
+
+# Copyright
+# copyright: "Copyright &copy; 2025 - Tu SO Project" Copywright?
+
+# Configuración para GitHub Pages
+site_dir: site
