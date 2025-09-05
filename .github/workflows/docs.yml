@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   deploy:
@@ -26,6 +26,7 @@ jobs:
         pip install mkdocs-git-revision-date-localized-plugin
         
     - name: Build MkDocs
+      working-directory: docs
       run: mkdocs build
         
     - name: Setup Pages
@@ -34,7 +35,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: './site'
+        path: './docs/site'
         
     - name: Deploy to GitHub Pages
       id: deployment
