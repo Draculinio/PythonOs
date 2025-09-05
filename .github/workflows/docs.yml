@@ -7,6 +7,10 @@ on:
     branches: [ main ]
 
 jobs:
+  permissions:
+    id-token: write
+    pages: write
+
   deploy:
     runs-on: ubuntu-latest
     
