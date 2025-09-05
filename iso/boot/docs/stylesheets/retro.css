@@ -1,0 +1,323 @@
+/* ========================================
+   RETRO 90s THEME PARA MKDOCS MATERIAL
+   ======================================== */
+
+/* Import de fuente monospace retro */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
+
+:root {
+  /* Colores tipo terminal retro */
+  --retro-green: #00ff41;
+  --retro-cyan: #00ffff;
+  --retro-amber: #ffb000;
+  --retro-magenta: #ff00ff;
+  --retro-dark: #0a0a0a;
+  --retro-darker: #000000;
+  --retro-scanline: rgba(0, 255, 65, 0.03);
+}
+
+/* ========================================
+   BACKGROUND Y EFECTOS GENERALES
+   ======================================== */
+
+/* Fondo principal con efecto CRT */
+body {
+  background: var(--retro-darker) !important;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace !important;
+  position: relative;
+}
+
+/* Efecto scanlines sutil */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    var(--retro-scanline) 2px,
+    var(--retro-scanline) 4px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ========================================
+   HEADER Y NAVEGACIÓN
+   ======================================== */
+
+/* Header principal */
+.md-header {
+  background: var(--retro-dark) !important;
+  border-bottom: 2px solid var(--retro-green) !important;
+  box-shadow: 0 2px 10px rgba(0, 255, 65, 0.3) !important;
+}
+
+/* Título del sitio con efecto glow */
+.md-header__title {
+  color: var(--retro-green) !important;
+  text-shadow: 0 0 10px var(--retro-green) !important;
+  font-weight: 700 !important;
+}
+
+/* Navegación tabs */
+.md-tabs {
+  background: var(--retro-dark) !important;
+  border-bottom: 1px solid var(--retro-cyan) !important;
+}
+
+.md-tabs__item {
+  color: var(--retro-cyan) !important;
+  transition: all 0.3s ease !important;
+}
+
+.md-tabs__link--active,
+.md-tabs__item:hover {
+  color: var(--retro-green) !important;
+  text-shadow: 0 0 5px var(--retro-green) !important;
+}
+
+/* ========================================
+   SIDEBAR Y NAVEGACIÓN
+   ======================================== */
+
+/* Sidebar principal */
+.md-sidebar {
+  background: var(--retro-dark) !important;
+  border-right: 2px solid var(--retro-green) !important;
+}
+
+/* Items de navegación */
+.md-nav__item .md-nav__link {
+  color: var(--retro-cyan) !important;
+  transition: all 0.2s ease !important;
+}
+
+.md-nav__item .md-nav__link:hover,
+.md-nav__item .md-nav__link--active {
+  color: var(--retro-green) !important;
+  text-shadow: 0 0 3px var(--retro-green) !important;
+  background: rgba(0, 255, 65, 0.1) !important;
+}
+
+/* ========================================
+   CONTENIDO PRINCIPAL
+   ======================================== */
+
+/* Contenedor principal */
+.md-main__inner {
+  background: var(--retro-darker) !important;
+}
+
+.md-content {
+  background: var(--retro-darker) !important;
+}
+
+/* Títulos con estilo retro */
+.md-content h1 {
+  color: var(--retro-green) !important;
+  text-shadow: 0 0 10px var(--retro-green) !important;
+  border-bottom: 2px solid var(--retro-green) !important;
+  padding-bottom: 10px !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
+.md-content h2 {
+  color: var(--retro-cyan) !important;
+  text-shadow: 0 0 5px var(--retro-cyan) !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
+.md-content h3, 
+.md-content h4, 
+.md-content h5, 
+.md-content h6 {
+  color: var(--retro-amber) !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
+/* Texto general */
+.md-content p,
+.md-content li {
+  color: var(--retro-green) !important;
+  line-height: 1.6 !important;
+}
+
+/* ========================================
+   BLOQUES DE CÓDIGO
+   ======================================== */
+
+/* Bloques de código con marco retro */
+.md-content pre {
+  background: var(--retro-dark) !important;
+  border: 2px solid var(--retro-cyan) !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2) !important;
+  position: relative !important;
+}
+
+.md-content pre::before {
+  content: '▄▄▄ TERMINAL OUTPUT ▄▄▄';
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  background: var(--retro-dark);
+  color: var(--retro-cyan);
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.md-content code {
+  background: var(--retro-dark) !important;
+  color: var(--retro-green) !important;
+  border: 1px solid var(--retro-green) !important;
+  border-radius: 0 !important;
+  padding: 2px 4px !important;
+}
+
+/* ========================================
+   TABLAS CON ESTILO RETRO
+   ======================================== */
+
+.md-content table {
+  border: 2px solid var(--retro-green) !important;
+  background: var(--retro-dark) !important;
+}
+
+.md-content th {
+  background: var(--retro-dark) !important;
+  color: var(--retro-cyan) !important;
+  border-bottom: 2px solid var(--retro-cyan) !important;
+  text-transform: uppercase !important;
+  font-weight: bold !important;
+}
+
+.md-content td {
+  color: var(--retro-green) !important;
+  border-bottom: 1px solid var(--retro-green) !important;
+}
+
+/* ========================================
+   ENLACES Y BOTONES
+   ======================================== */
+
+.md-content a {
+  color: var(--retro-cyan) !important;
+  text-decoration: underline !important;
+  transition: all 0.3s ease !important;
+}
+
+.md-content a:hover {
+  color: var(--retro-green) !important;
+  text-shadow: 0 0 5px var(--retro-green) !important;
+}
+
+/* Botones */
+.md-button {
+  background: var(--retro-dark) !important;
+  color: var(--retro-green) !important;
+  border: 2px solid var(--retro-green) !important;
+  border-radius: 0 !important;
+  transition: all 0.3s ease !important;
+}
+
+.md-button:hover {
+  background: var(--retro-green) !important;
+  color: var(--retro-dark) !important;
+  box-shadow: 0 0 15px var(--retro-green) !important;
+}
+
+/* ========================================
+   SEARCH Y OTROS ELEMENTOS
+   ======================================== */
+
+/* Search box */
+.md-search__input {
+  background: var(--retro-dark) !important;
+  color: var(--retro-green) !important;
+  border: 2px solid var(--retro-cyan) !important;
+  border-radius: 0 !important;
+}
+
+.md-search__input::placeholder {
+  color: var(--retro-cyan) !important;
+  opacity: 0.7 !important;
+}
+
+/* Footer */
+.md-footer {
+  background: var(--retro-dark) !important;
+  border-top: 2px solid var(--retro-green) !important;
+  color: var(--retro-green) !important;
+}
+
+/* ========================================
+   ADMONITIONS (CAJAS DE ALERTA)
+   ======================================== */
+
+.admonition {
+  border: 2px solid var(--retro-amber) !important;
+  background: var(--retro-dark) !important;
+  border-radius: 0 !important;
+}
+
+.admonition-title {
+  background: var(--retro-dark) !important;
+  color: var(--retro-amber) !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+}
+
+.admonition.note {
+  border-color: var(--retro-cyan) !important;
+}
+
+.admonition.note .admonition-title {
+  color: var(--retro-cyan) !important;
+}
+
+.admonition.warning {
+  border-color: var(--retro-amber) !important;
+}
+
+.admonition.danger {
+  border-color: var(--retro-magenta) !important;
+}
+
+.admonition.danger .admonition-title {
+  color: var(--retro-magenta) !important;
+}
+
+/* ========================================
+   EFECTOS ESPECIALES
+   ======================================== */
+
+/* Cursor parpadeante para elementos específicos */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Aplicar a elementos con clase .terminal-cursor */
+.terminal-cursor::after {
+  content: '█';
+  animation: blink 1s infinite;
+  color: var(--retro-green);
+}
+
+/* Efecto de typing para títulos principales */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(40, end);
+}

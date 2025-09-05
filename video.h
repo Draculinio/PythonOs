@@ -40,5 +40,6 @@ void print_prompt();
 void print_int(int num); // This should not be in video.h, but is needed for memory.c
 void int_to_str(int num, char *str); // Function to convert integer to string
 void print_hex(uint32_t num);
+void scroll();
 
 #endif

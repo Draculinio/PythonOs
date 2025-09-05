@@ -16,7 +16,7 @@ void kernel_main(void) {
     meminfo();
     print_color("PythonOS - Kernel started\n",BLUE_ON_BLACK);
     print_color("Type 'help' for commands\n", GREEN_ON_BLACK);
-    print("Version: 0.05 Alpha\n\n");
+    print("Version: 0.051 Alpha\n\n");
     print_prompt();
     
 

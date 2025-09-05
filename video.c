@@ -1,11 +1,9 @@
 #include "video.h"
 #include "string.h"
 
-#define VIDEO_ADDRESS 0xb8000
+#define VIDEO_ADDRESS (uint16_t*)0xB8000
 #define MAX_ROWS 25
 #define MAX_COLS 80
-
-
 
 #define WHITE_ON_BLACK 0x0F
 #define PROMPT "> "
@@ -27,6 +25,26 @@ void backspace() {
     }
 }
 
+//Scroll into the console
+void scroll() {
+    uint16_t *video = VIDEO_ADDRESS;
+
+    // Move files up
+    for (int row = 1; row < MAX_ROWS; row++) {
+        for (int col = 0; col < MAX_COLS; col++) {
+            video[(row - 1) * MAX_COLS + col] = video[row * MAX_COLS + col];
+        }
+    }
+
+    // Clean last line
+    for (int col = 0; col < MAX_COLS; col++) {
+        video[(MAX_ROWS - 1) * MAX_COLS + col] = (uint16_t)' ' | (WHITE_ON_BLACK << 8);
+    }
+
+    if (cursor_row > 0) {
+        cursor_row--;
+    }
+}
 
 // Writes a character on a position
 static void put_char_at(char c, int row, int col, char attr) {
@@ -63,7 +81,8 @@ void print(const char *str) {
         }
 
         if (cursor_row >= MAX_ROWS) {
-            cursor_row = 0;  // On overflow, wrap to the top (TODO: Scroll)
+            //cursor_row = 0;  // On overflow, wrap to the top (TODO: Scroll)
+            scroll();
         }
 
         str++;
