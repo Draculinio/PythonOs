@@ -1,10 +1,10 @@
-site_name: "Python OS - Documentation"
-site_description: "Documentation to get started with Python OS"
-site_url: "https://Draculinio.github.io/PythonOs/"
+site_name: "Tu SO - Manual de Usuario"
+site_description: "Documentación oficial del sistema operativo"
+site_url: "https://tu-usuario.github.io/tu-repo-name/"
 
 # Configuración del repositorio
-repo_name: "Draculinio/PythonOs"
-repo_url: "https://github.com/tu-usuario/PythonOs"
+repo_name: "tu-usuario/tu-repo"
+repo_url: "https://github.com/tu-usuario/tu-repo"
 edit_uri: "edit/main/docs/"
 
 # Theme con estética noventera
@@ -85,11 +85,11 @@ markdown_extensions:
 
 # CSS customizado para look noventero
 extra_css:
-  - documentation/stylesheets/retro.css
+  - stylesheets/retro.css
 
-# JavaScript extra (opcional)
+# JavaScript extra (opcional)  
 extra_javascript:
-  - documentation/javascripts/terminal-effects.js
+  - javascripts/terminal-effects.js
 
 # Variables extra
 extra:
@@ -97,12 +97,12 @@ extra:
     provider: mike
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/Draculinio/PythonOs
+      link: https://github.com/tu-usuario/tu-repo
     - icon: fontawesome/solid/terminal
       link: "#"
 
 # Copyright
-# copyright: "Copyright &copy; 2025 - Tu SO Project" Copywright?
+# copyright: "Copyright &copy; 2025 - Tu SO Project"
 
 # Configuración para GitHub Pages
 site_dir: site
