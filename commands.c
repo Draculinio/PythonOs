@@ -11,6 +11,14 @@ void process_command(const char *input) {
         print("help - shows help\n");
         print("clear - clean screen\n");
         print("meminfo - shows memory usage\n");
+        print("malloc <n> - allocates n bytes\n");
+        print("free <addr> - frees memory at address\n");
+        print("dump - dumps heap info\n");
+        print("gdump - visual heap dump\n");
+        print("allocInt <value> - allocates an int with value\n");
+        print("poke <addr> <value> - writes value at address\n");
+        print("peek <addr> - reads byte at address\n");
+        print("peekHex <hex_addr> - reads byte at hex address\n");
         print("version - shows OS version\n");
     }
     else if (strcmp(input, "clear") == 0) {
@@ -40,7 +48,7 @@ void process_command(const char *input) {
         }
     }
     else if (strcmp(input, "version") == 0) {
-        print_color("PythonOS Version: 0.05 Alpha\n", BLUE_ON_BLACK);
+        print_color("PythonOS Version: 0.051 Alpha\n", BLUE_ON_BLACK);
     }
     else if (strcmp(input, "dump") == 0) {
         dump_heap();

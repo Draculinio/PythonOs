@@ -43,24 +43,24 @@ theme:
 
 # Estructura de navegación
 nav:
-  - Inicio: index.md
-  - Empezando: getting-started.md
-  - Comandos:
+  - Index: index.md
+  - Starting: getting-started.md
+  - Commands:
     - commands/index.md
-  - Memoria:
+  - Memory:
     - memory/index.md
-  - Ejemplos:
+  - Examples:
     - examples/index.md
 
-# Plugins para funcionalidad extra
+# Plugins for extra functionality
 plugins:
   - search:
-      lang: es
+      lang: en
   - git-revision-date-localized:
       type: datetime
       locale: es
 
-# Extensions de Markdown
+# Markdown extentions for enhanced formatting
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -83,15 +83,15 @@ markdown_extensions:
   - toc:
       permalink: true
 
-# CSS customizado para look noventero
+# Customized CSS
 extra_css:
   - stylesheets/retro.css
 
-# JavaScript extra (opcional)  
+# Extra JavaScript  
 extra_javascript:
   - javascripts/terminal-effects.js
 
-# Variables extra
+# Extra variables
 extra:
   version:
     provider: mike
@@ -104,5 +104,5 @@ extra:
 # Copyright
 # copyright: "Copyright &copy; 2025 - Tu SO Project"
 
-# Configuración para GitHub Pages
+# Configuration for GitHub Pages
 site_dir: site
