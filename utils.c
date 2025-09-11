@@ -43,7 +43,7 @@ int sscanf_simple(const char* str, const char* fmt, uint32_t* a, uint32_t* b) {
 }
 
 
-uint32_t hex_to_int(char* hex_str) {
+uint32_t hex_to_int(const char* hex_str) {
     uint32_t result = 0;
     int i = 0;
     

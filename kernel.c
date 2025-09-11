@@ -13,7 +13,6 @@ void kernel_main(void) {
     memory_init(0x01000000, 0x00100000); // inicializar memoria (1MB a partir de 1MB (0x100000))
     //void* a = kmalloc(256);
     //void* b = kmalloc(128);
-    meminfo();
     print_color("PythonOS - Kernel started\n",BLUE_ON_BLACK);
     print_color("Type 'help' for commands\n", GREEN_ON_BLACK);
     print("Version: 0.051 Alpha\n\n");
