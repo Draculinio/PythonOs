@@ -3,6 +3,7 @@
 #include "string.h"
 #include "memory.h"
 #include "utils.h"
+#include "pit.h"
 
 void process_command(const char *input) {
     if (strcmp(input, "help") == 0) {
@@ -93,6 +94,11 @@ void process_command(const char *input) {
         print(" (0x");
         print_hex(value);
         print(")\n");
+    }
+    else if (strcmp(input, "uptime") == 0) {
+        print("Uptime: ");
+        print_int(pit_get_ticks() / 100); // si tu PIT es 100 Hz
+        print(" seconds\n");
     }
 
     else {
