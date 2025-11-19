@@ -1,6 +1,7 @@
 #include "isr.h"
 #include "video.h"     // para print_color(), print_int()
 #include <stddef.h>    // para NULL
+//extern void (*interrupt_handlers[256])(registers_t *r);
 
 #define IDT_ENTRIES 256
 
@@ -22,7 +23,7 @@ static struct idt_entry idt[IDT_ENTRIES];
 static struct idt_ptr idtp;
 
 // ----- Tabla de handlers de C -----
-static void (*interrupt_handlers[IDT_ENTRIES])(registers_t *r) = { 0 };
+//static void (*interrupt_handlers[IDT_ENTRIES])(registers_t *r) = { 0 };
 
 // ----- Referencias externas -----
 extern void idt_load(void* idt_ptr);
@@ -66,7 +67,7 @@ void disable_interrupts() { asm volatile ("cli"); }
 //}
 
 // ----- ISR handler global -----
-void isr_handler(registers_t *r) {
+/*void isr_handler(registers_t *r) {
     if (interrupt_handlers[r->int_no]) {
         interrupt_handlers[r->int_no](r);
     } else {
@@ -74,4 +75,4 @@ void isr_handler(registers_t *r) {
         print_int(r->int_no);
         print("\n");
     }
-}
+}*/

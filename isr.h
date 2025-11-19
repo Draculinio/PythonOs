@@ -21,5 +21,5 @@ void irq0_handler();
 void irq1_handler();
 
 // Nueva API: registrar handlers en C
-//void register_interrupt_handler(uint8_t n, void (*handler)(registers_t *r));
+void register_interrupt_handler(uint8_t n, void (*handler)(registers_t *r));
 void isr_handler(registers_t *r);

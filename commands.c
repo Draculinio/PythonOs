@@ -4,6 +4,7 @@
 #include "memory.h"
 #include "utils.h"
 #include "pit.h"
+#include "sleep.h"
 
 void process_command(const char *input) {
     if (strcmp(input, "help") == 0) {
@@ -96,11 +97,21 @@ void process_command(const char *input) {
         print(")\n");
     }
     else if (strcmp(input, "uptime") == 0) {
-        print("Uptime: ");
-        print_int(pit_get_ticks() / 100); // si tu PIT es 100 Hz
+        uint32_t ticks = pit_get_ticks();
+        print("Total ticks: ");
+        print_int(ticks);
+        print("\nUptime: ");
+        print_int(ticks / 100); // si tu PIT es 100 Hz
         print(" seconds\n");
     }
-
+    else if(strncmp(input, "sleep ", 6) == 0) {
+        uint32_t ms = (uint32_t)atoi(input + 6);
+        print("Sleeping for ");
+        print_int(ms);
+        print(" ms...\n");
+        sleep_ms(ms);
+        print("Awake!\n");
+    }
     else {
         print("Command not found: ");
         print(input);

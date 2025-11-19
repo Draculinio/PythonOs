@@ -7,12 +7,9 @@
 
 static uint32_t tick_count = 0;
 
-static void pit_callback(registers_t* regs) {
-    (void)regs;
+
+void timer_interrupt_handler(void) {
     tick_count++;
-    if (tick_count % 50 == 0) {
-        print(".");
-    }
 }
 
 void pit_init(uint32_t frequency) {
@@ -29,7 +26,7 @@ void pit_init(uint32_t frequency) {
     outb(0x40, high);
 
     // Registrar el handler para IRQ0
-    register_interrupt_handler(32, pit_callback);
+    //register_interrupt_handler(32, pit_callback);
 
     print_color("PIT initialized at ", GREEN_ON_BLACK);
     print_int(frequency);

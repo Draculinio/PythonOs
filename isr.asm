@@ -5,6 +5,7 @@ global default_handler
 global irq0_handler
 
 extern keyboard_interrupt
+extern timer_interrupt_handler
 
 idt_load:
     push ebp
@@ -19,16 +20,13 @@ default_handler:
     cli
     hlt
     popa
-
     iretd
 
 irq0_handler:
     pusha
     
-    ; Aquí podés llamar a una función en C si querés manejar el timer
-    ; call timer_interrupt_handler  ; Opcional
-
-    ; Enviar EOI al PIC maestro (IRQ0 es el primero)
+    call timer_interrupt_handler
+    
     mov al, 0x20
     out 0x20, al
     popa

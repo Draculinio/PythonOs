@@ -12,4 +12,6 @@ void pit_init(uint32_t frequency);
 // Devuelve el número de ticks desde el arranque
 uint32_t pit_get_ticks(void);
 
+void timer_interrupt_handler(void);
+
 #endif

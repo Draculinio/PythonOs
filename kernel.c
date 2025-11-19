@@ -5,6 +5,7 @@
 #include "memory.h"
 #include "pit.h"
 #include "irq.h"
+#include "sleep.h"
 
 void kernel_main(void) {
     clear_screen();
