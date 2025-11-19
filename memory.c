@@ -149,10 +149,10 @@ void meminfo() {
     uint32_t total      = heap_end - heap_start;
     uint32_t bumped     = current - heap_start;
 
-    // Sumar bytes libres en freelist
+    // Sumar bytes libres en freelist (incluyendo headers)
     uint32_t free_bytes = 0;
     for (block_header* it = free_list; it; it = it->next) {
-        free_bytes += it->size;
+        free_bytes += it->size + sizeof(block_header);
     }
 
     uint32_t used = (bumped >= free_bytes) ? (bumped - free_bytes) : 0;
@@ -176,21 +176,39 @@ void dump_heap() {
 
     print("  current : ");
     print_int(current);
+    print("\n");
 
     print("  end     : ");
     print_int(heap_end);
     print("\n");
 
-    uint32_t used = (uint32_t)current - (uint32_t)heap_start;
-    uint32_t free = (uint32_t)heap_end - (uint32_t)current;
+    uint32_t bumped = current - heap_start;
+    
+    // Calcular bytes realmente libres en free_list (incluyendo headers)
+    uint32_t free_bytes = 0;
+    for (block_header* blk = free_list; blk; blk = blk->next) {
+        free_bytes += blk->size + sizeof(block_header);
+    }
+    
+    // Memoria realmente usada = bumpeado - liberado
+    uint32_t used = (bumped >= free_bytes) ? (bumped - free_bytes) : 0;
+    uint32_t available = (heap_end - heap_start) - used;
 
+    print("  bumped  : ");
+    print_int(bumped);
+    print(" bytes\n");
+    
+    print("  freed   : ");
+    print_int(free_bytes);
+    print(" bytes\n");
+    
     print("  used    : ");
     print_int(used);
     print(" bytes\n");
-    print("  free    : ");
-    print_int(free);
+    
+    print("  avail   : ");
+    print_int(available);
     print(" bytes\n");
-
 }
 
 void dump_heap_visual() {
@@ -208,8 +226,6 @@ void dump_heap_visual() {
 }
 
 //----
-
-// Añadir estas funciones a tu memory.c
 
 // Verifica si una dirección está dentro de algún bloque libre
 static int is_in_free_block(uint32_t addr) {
@@ -371,13 +387,13 @@ void dump_heap_compact() {
     uint32_t total = heap_end - heap_start;
     uint32_t bumped = current - heap_start;
     
-    // Calcular bytes realmente libres en free_list
+    // Calcular bytes realmente libres en free_list (incluyendo headers)
     uint32_t free_bytes = 0;
     for (block_header* blk = free_list; blk; blk = blk->next) {
-        free_bytes += blk->size;
+        free_bytes += blk->size + sizeof(block_header);
     }
     
-    uint32_t allocated = bumped - free_bytes;
+    uint32_t allocated = (bumped >= free_bytes) ? (bumped - free_bytes) : 0;
     
     print_color("Heap: ", WHITE_ON_BLACK);
     print_int(allocated);
